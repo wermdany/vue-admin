@@ -1,29 +1,14 @@
 # vue-admin
 
-## Project setup
-```
-yarn install
-```
+> 基于 Vue3+TypeScript+Ant-Design-Vue 的管理系统
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+## 起步
 
-### Compiles and minifies for production
-```
-yarn build
-```
+## 环境变量
 
-### Run your unit tests
-```
-yarn test:unit
-```
+## 功能
 
-### Lints and fixes files
-```
-yarn lint
-```
+### 系统初始化
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## 内置组件
+
