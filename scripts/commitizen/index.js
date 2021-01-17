@@ -1,5 +1,5 @@
 /**
- * 使用 commitizen 的语言
+ * 使用 commitizen 的语言 zh|en
  */
 const useLanguage = "zh";
 
