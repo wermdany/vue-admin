@@ -1,30 +1,27 @@
-<template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view />
-</template>
-
-<style lang="less">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+<script>
+import { defineComponent, ref } from "vue";
+import { Button } from "ant-design-vue";
+export default defineComponent({
+  components: {
+    AButton: Button
+  },
+  setup() {
+    const count = ref(0);
+    const danger = () => {
+      count.value++;
+    };
+    return {
+      count,
+      danger
+    };
   }
-}
-</style>
+});
+</script>
+
+<template>
+  <a-button type="primary" @click="danger">
+    哈哈
+  </a-button>
+  <p>1111</p>
+</template>
+<style lang="less" scoped></style>

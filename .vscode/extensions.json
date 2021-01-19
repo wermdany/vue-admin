@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "ant-design-vue.vscode-ant-design-vue-helper",
+    "streetsidesoftware.code-spell-checker",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "octref.vetur"
+  ]
+}
