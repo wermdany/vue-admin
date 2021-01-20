@@ -5,7 +5,8 @@ const less = {
   modifyVars: {
     hack: `true;@import "${resolve(
       "./src/styles/var/ant-design-vue/index.less"
-    )}";@import "${resolve("./src/styles/var/ant-design-vue/dark.less")}";`
+    )}";`
+    // @import "${resolve("./src/styles/var/ant-design-vue/dark.less")}";
   }
 };
 

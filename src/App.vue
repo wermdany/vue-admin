@@ -1,13 +1,14 @@
 <script>
 import { defineComponent, ref } from "vue";
-import { Button } from "ant-design-vue";
+import { Button, message } from "ant-design-vue";
 export default defineComponent({
   components: {
-    AButton: Button
+    [Button.name]: Button
   },
   setup() {
     const count = ref(0);
     const danger = () => {
+      message.info("a111111111");
       count.value++;
     };
     return {
@@ -19,9 +20,8 @@ export default defineComponent({
 </script>
 
 <template>
-  <a-button type="primary" @click="danger">
+  <a-button type="danger" @click="danger">
     哈哈
   </a-button>
-  <p>1111</p>
 </template>
 <style lang="less" scoped></style>
