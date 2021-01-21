@@ -1,4 +1,7 @@
+const { getNow } = require("./utils");
+
 const env = process.env;
+
 /**
  *获取环境变量
  *
@@ -15,6 +18,11 @@ const getEnv = function() {
   }
   return envs;
 };
+/** 非配置文件的环境变量  */
+const useOtherEnv = {
+  APP_VERSION: require("../package.json").version,
+  DATE_TIME: getNow()
+};
 
 const isDev = env.NODE_ENV === "development";
 
@@ -26,5 +34,6 @@ module.exports = {
   getEnv,
   isDev,
   isProd,
-  isTest
+  isTest,
+  useOtherEnv
 };

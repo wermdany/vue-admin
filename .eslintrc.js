@@ -18,7 +18,9 @@ module.exports = {
   rules: {
     "no-console": isProd ? "warn" : "off",
     "no-debugger": isProd ? "warn" : "off",
-    "@typescript-eslint/no-var-requires": "off"
+    "@typescript-eslint/no-var-requires": "off",
+    "@typescript-eslint/consistent-type-assertions": "off",
+    "@typescript-eslint/no-unused-vars": "error"
   },
   overrides: [
     {

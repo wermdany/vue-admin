@@ -1,12 +1,12 @@
 {
   "name": "vue-admin",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "dev": "vue-cli-service serve --mode dev",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint",
+    "lint": "vue-cli-service lint --mode lint",
     "commit": "git add . && node_modules/.bin/cz"
   },
   "dependencies": {
@@ -15,6 +15,7 @@
     "core-js": "^3.6.5",
     "dayjs": "^1.10.3",
     "vue": "^3.0.0",
+    "vue-i18n": "^9.0.0-rc.3",
     "vue-router": "^4.0.0-0",
     "vuex": "^4.0.0-0"
   },
