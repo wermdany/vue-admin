@@ -20,6 +20,5 @@ export interface SelfRouteMeta {
 export interface SelfRouteRaw extends _RouteRecordBase {
   /** 组件映射名 */
   component: string;
-
   meta?: SelfRouteMeta;
 }

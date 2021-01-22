@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, reactive } from "vue";
 import { Button } from "ant-design-vue";
 export default defineComponent({
   name: "AA",
@@ -7,13 +7,21 @@ export default defineComponent({
     AButton: Button
   },
   setup() {
-    // hasRoute;
+    const tree = reactive(new Map());
+    let count = 1;
+    tree.set({ a: 1 }, { b: 2 });
+    const add = () => {
+      tree.set({ a: "bb" + count++ }, { d: 1 });
+      console.log(tree);
+    };
     const a = { b: 2 };
-    return { a };
+    return { a, tree, add };
   }
 });
 export const name = "AA";
 </script>
 <template>
-  <a-button type="danger">{{ a }}</a-button>
+  <a-button type="danger" @click="add" v-for="[a, b] in tree" :key="a.a">
+    {{ b }}
+  </a-button>
 </template>

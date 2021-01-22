@@ -30,7 +30,18 @@ const routes: Array<RouteRecordRaw> = [
 /** 初始化 router */
 const router = createRouter({
   history: createWebHashHistory(),
-  routes
+  routes,
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      console.log(savedPosition);
+      return savedPosition;
+    } else {
+      return {
+        top: 0,
+        behavior: "smooth"
+      };
+    }
+  }
 });
 
 /**

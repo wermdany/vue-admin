@@ -2,10 +2,11 @@
   "cSpell.words": [
     "scripthost"
   ],
-  "vetur.experimental.templateInterpolationService": true,
   "editor.formatOnType": true,
   "eslint.packageManager": "yarn",
   "eslint.validate": [
     "typescript"
-  ]
+  ],
+  "vetur.validation.templateProps": true,
+  "vetur.experimental.templateInterpolationService": true
 }

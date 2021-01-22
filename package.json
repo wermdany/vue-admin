@@ -7,7 +7,8 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint --mode lint",
-    "commit": "git add . && node_modules/.bin/cz"
+    "commit": "git add . && node_modules/.bin/cz",
+    "push": "git push origin dev"
   },
   "dependencies": {
     "ant-design-vue": "^2.0.0-rc.8",
