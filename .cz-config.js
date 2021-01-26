@@ -1,7 +1,7 @@
-const { useLanguage } = require("./scripts/commitizen");
+const { useLanguage } = require("./build/commitizen");
 
 const configList = {
-  zh: require("./scripts/commitizen/config-zh"),
-  en: require("./scripts/commitizen/config-en")
+  zh: require("./build/commitizen/config-zh"),
+  en: require("./build/commitizen/config-en")
 };
 module.exports = configList[useLanguage];

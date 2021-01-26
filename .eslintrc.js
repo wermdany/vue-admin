@@ -1,4 +1,4 @@
-const { isProd } = require("./scripts/env");
+const { isProd } = require("./build/env");
 
 module.exports = {
   root: true,

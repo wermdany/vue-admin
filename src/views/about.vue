@@ -1,6 +1,7 @@
 <script lang="ts">
 import { defineComponent, reactive } from "vue";
 import { Button } from "ant-design-vue";
+
 export default defineComponent({
   name: "AA",
   components: {
@@ -18,7 +19,6 @@ export default defineComponent({
     return { a, tree, add };
   }
 });
-export const name = "AA";
 </script>
 <template>
   <a-button type="danger" @click="add" v-for="[a, b] in tree" :key="a.a">
