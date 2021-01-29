@@ -1,4 +1,5 @@
 const { getNow } = require("./utils");
+const gitRevisionPlugin = require("git-revision-webpack-plugin");
 
 const env = process.env;
 
@@ -18,10 +19,20 @@ const getEnv = function() {
   }
   return envs;
 };
+const getGitHash = function() {
+  try {
+    const git = new gitRevisionPlugin();
+    return git.commithash();
+    // eslint-disable-next-line no-empty
+  } catch (e) {}
+  return "unknown";
+};
+
 /** 非配置文件的环境变量  */
 const useOtherEnv = {
   APP_VERSION: require("../package.json").version,
-  DATE_TIME: getNow()
+  BUILD_TIME: getNow(),
+  GIT_HASH: getGitHash()
 };
 
 const isDev = env.NODE_ENV === "development";

@@ -7,4 +7,7 @@ module.exports = config => {
     config.devtool("source-map");
   }
   plugins(config);
+  // config.optimization.splitChunks({
+  //   chunks: "all"
+  // });
 };

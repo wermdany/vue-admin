@@ -4,6 +4,11 @@
     "streetsidesoftware.code-spell-checker",
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
-    "octref.vetur"
+    "octref.vetur",
+    "coenraads.bracket-pair-colorizer-2",
+    "ms-vscode.atom-keybindings",
+    "pkief.material-icon-theme",
+    "zhuangtongfa.material-theme",
+    "mikestead.dotenv"
   ]
 }
