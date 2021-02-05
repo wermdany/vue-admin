@@ -32,7 +32,7 @@ const getGitHash = function() {
 const useOtherEnv = {
   APP_VERSION: require("../package.json").version,
   BUILD_TIME: getNow(),
-  GIT_HASH: getGitHash()
+  GIT_HASH: getGitHash().toLocaleUpperCase()
 };
 
 const isDev = env.NODE_ENV === "development";

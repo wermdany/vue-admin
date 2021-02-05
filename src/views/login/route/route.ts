@@ -2,7 +2,7 @@ import { SelfRouteRaw } from "@/types/route";
 
 const route: Array<SelfRouteRaw> = [
   {
-    path: "/",
+    path: "/login",
     component: "LOGIN"
   }
 ];

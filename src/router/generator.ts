@@ -92,10 +92,11 @@ export function giveRouteConfigUseComponent(
   const res: SelfRouteRaw[] = [];
   useConfig.forEach(item => {
     const node = item;
-    if (!allMap.has(<string>item.name)) {
-      console.error(`缺少[${item.name}]的组件映射`);
+    if (!allMap.has(<string>item.component)) {
+      console.error(`缺少[${item.component}]的组件映射`);
     } else {
-      node.component = allMap.get(<string>item.name)?.component;
+      node.name = item.component as string;
+      node.component = allMap.get(<string>item.component)?.component;
     }
     res.push(node);
     if (node.children) {

@@ -4,28 +4,18 @@ import {
   RouteRecordName,
   RouteRecordRaw
 } from "vue-router";
+import {
+  getAllRouteConfig,
+  getAllRouteMap,
+  getUseRouteConfig,
+  getUseRouteMap,
+  giveRouteConfigUseComponent
+} from "./generator";
 
-const aa = () => import("@/views/about.vue");
-
-const routes: Array<RouteRecordRaw> = [
-  {
-    path: "/",
-    redirect: "/index"
-  },
-  {
-    path: "/index",
-    component: () => import("@/views/index.vue")
-  },
-  {
-    path: "/about",
-    name: Symbol("aa"),
-    component: aa
-  },
-  {
-    path: "/:all(.*)+",
-    redirect: "/about"
-  }
-];
+const routes = giveRouteConfigUseComponent(
+  getUseRouteMap(getAllRouteMap()),
+  getUseRouteConfig(getAllRouteConfig())
+) as any;
 
 /** 初始化 router */
 const router = createRouter({
@@ -33,7 +23,7 @@ const router = createRouter({
   routes,
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
-      console.log(savedPosition);
+      // console.log(savedPosition);
       return savedPosition;
     } else {
       return {
