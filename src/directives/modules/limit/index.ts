@@ -10,7 +10,6 @@ function filter(regexp: RegExp) {
 
 const inputLimit: ObjectDirective = {
   mounted(el, binding) {
-    console.log(el, binding);
     let inputEl: typeof el = findElementByName(el, "input");
     if (!inputEl) {
       inputEl = findElementByName(el, "textarea");
@@ -20,7 +19,6 @@ const inputLimit: ObjectDirective = {
     }
     let filterFun: any = null;
     if (isRegExp(binding.value)) {
-      console.log(binding.value);
       filterFun = filter(binding.value);
     } else if (isFun(binding.value)) {
       filterFun = binding.value;

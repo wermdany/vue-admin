@@ -11,12 +11,17 @@ import {
   getUseRouteMap,
   giveRouteConfigUseComponent
 } from "./generator";
+import { HOME_PAGE, NONE_PAGE } from "./config";
 
-const routes = giveRouteConfigUseComponent(
+let routes = giveRouteConfigUseComponent(
   getUseRouteMap(getAllRouteMap()),
   getUseRouteConfig(getAllRouteConfig())
-) as any;
+) as Array<any>;
 
+/** 加入 HOME_PAGE */
+routes = routes.concat(HOME_PAGE);
+/** 加入 NONE_PAGE */
+routes = routes.concat(NONE_PAGE);
 /** 初始化 router */
 const router = createRouter({
   history: createWebHashHistory(),

@@ -18,5 +18,6 @@ const join = file => path.join(rootPath, file);
 
 module.exports = {
   resolve,
-  join
+  join,
+  rootPath
 };

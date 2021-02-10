@@ -4,6 +4,7 @@
 
 import { SelfRouteMap, SelfRouteRaw } from "@/types/route";
 import { RouteMapItem } from "@/types/route";
+import { join } from "path";
 
 type AllRouteMap = Map<string, SelfRouteMap>;
 type AllRouteConfig = Map<string, SelfRouteRaw[]>;
@@ -24,10 +25,15 @@ export function getAllRouteMap() {
 
   const maps: AllRouteMap = readMap.keys().reduce((all, path) => {
     const moduleName = path.replace(mapModuleNameReg, "$1");
-    all.set(moduleName, readMap(path).default);
+    if (readMap(path).default) {
+      all.set(moduleName, readMap(path).default);
+    } else {
+      console.warn(
+        `路由映射-模块[${moduleName}]文件为空。\n在 ${join("src", path)}`
+      );
+    }
     return all;
   }, new Map());
-
   return maps;
 }
 
@@ -48,10 +54,15 @@ export function getAllRouteConfig() {
     .keys()
     .reduce((all, path) => {
       const moduleName = path.replace(RouteModuleNameReg, "$1");
-      all.set(moduleName, readRouteConfig(path).default);
+      if (readRouteConfig(path).default) {
+        all.set(moduleName, readRouteConfig(path).default);
+      } else {
+        console.warn(
+          `路由配置-模块[${moduleName}]文件为空。\n在${join("src", path)}`
+        );
+      }
       return all;
     }, new Map());
-
   return allRouteConfig;
 }
 
