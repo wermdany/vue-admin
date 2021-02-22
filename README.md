@@ -10,4 +10,8 @@
 
 ### 系统初始化
 
+### 路由规则
+
+> 路由规则详见 [src/router/README.md](./src/router/README.md)
+
 ## 内置组件

@@ -96,6 +96,13 @@ export function getUseRouteConfig(routeConfig: AllRouteConfig) {
   return res;
 }
 
+/**
+ *根据自定的路由规则匹配上去对应的组件
+ *
+ * @export
+ * @param {Map<string, RouteMapItem>} allMap
+ * @param {SelfRouteRaw[]} useConfig
+ */
 export function giveRouteConfigUseComponent(
   allMap: Map<string, RouteMapItem>,
   useConfig: SelfRouteRaw[]

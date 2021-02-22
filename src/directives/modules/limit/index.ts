@@ -42,7 +42,7 @@ const inputLimit: ObjectDirective = {
       inputEl._composing_ = true;
     };
     inputEl._compositionend_ = function(e: any) {
-      const wish = filter(e.target.value);
+      const wish = filterFun(e.target.value);
       inputEl._composing_ = false;
       //只有存在不合理的才会格式化，ios光标跳至最后
       if (e.target.value !== wish) {

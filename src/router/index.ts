@@ -12,6 +12,8 @@ import {
   giveRouteConfigUseComponent
 } from "./generator";
 import { HOME_PAGE, NONE_PAGE } from "./config";
+import { App } from "vue";
+import { createGuard } from "./guard";
 
 let routes = giveRouteConfigUseComponent(
   getUseRouteMap(getAllRouteMap()),
@@ -82,3 +84,8 @@ export function hasRoute(name: RouteRecordName) {
 }
 
 export default router;
+
+export function useVueRouter(app: App) {
+  app.use(router);
+  createGuard(router);
+}

@@ -16,5 +16,9 @@
   "i18n-ally.pathMatcher": "{locale}/{namespaces}.{ext}",
   "i18n-ally.enabledParsers": ["ts"],
   "i18n-ally.sourceLanguage": "zh",
-  "i18n-ally.enabledFrameworks": ["vue", "react"]
+  "i18n-ally.enabledFrameworks": [
+    "vue",
+    "react"
+  ],
+  "typescript.tsdk": "node_modules\\typescript\\lib"
 }

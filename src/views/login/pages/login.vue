@@ -1,6 +1,6 @@
 <template>
   <div class="login">
-    <input type="text" v-input-limit="/[^\d+]/" name="" id="" />
+    <input type="text" v-input-limit="/[^\d+]/" />
   </div>
 </template>
 
@@ -10,7 +10,7 @@ import inputLimit from "@/directives/modules/limit";
 export default defineComponent({
   name: "LOGIN",
   setup() {
-    const a = ref({ b: 1 });
+    const a = ref(1);
     return { a };
   },
   directives: {
