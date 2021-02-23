@@ -7,9 +7,9 @@ const vueI18nOptions: I18nOptions = {
   legacy: false,
   sync: true,
   // legacy 是否禁止失败时的警告 dev 开启
-  silentTranslationWarn: !isDev(),
+  silentTranslationWarn: isDev(),
   // Composition API 本地化失败时是否禁止输出警告 dev 开启
-  missingWarn: !isDev(),
+  missingWarn: isDev(),
   silentFallbackWarn: true,
   locale: "",
   fallbackLocale: localConfig.fallbackLocale,
@@ -19,7 +19,7 @@ const vueI18nOptions: I18nOptions = {
 
 export let vueI18n: I18n;
 
-export function useVueI18n(app: App) {
+export function setupVueI18n(app: App) {
   vueI18n = createI18n(vueI18nOptions) as I18n;
   app.use(vueI18n);
 }

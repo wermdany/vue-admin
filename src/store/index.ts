@@ -10,6 +10,6 @@ const store = createStore({
 
 export default store;
 
-export function useVueStore(app: App) {
+export function setupVueStore(app: App) {
   app.use(store);
 }

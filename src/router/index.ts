@@ -85,7 +85,7 @@ export function hasRoute(name: RouteRecordName) {
 
 export default router;
 
-export function useVueRouter(app: App) {
+export function setupVueRouter(app: App) {
   app.use(router);
   createGuard(router);
 }

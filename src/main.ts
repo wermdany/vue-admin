@@ -2,20 +2,20 @@ import { createApp } from "vue";
 
 import App from "@/App.vue";
 
-import router, { useVueRouter } from "@/router";
-import { useVueStore } from "@/store";
-import { useVueI18n } from "@/locales";
+import router, { setupVueRouter } from "@/router";
+import { setupVueStore } from "@/store";
+import { setupVueI18n } from "@/locales";
 import { isDev } from "@/var/env";
 
 const app = createApp(App);
 
 console.log(process.env);
 
-useVueI18n(app);
+setupVueI18n(app);
 
-useVueRouter(app);
+setupVueRouter(app);
 
-useVueStore(app);
+setupVueStore(app);
 
 router.isReady().then(() => {
   app.mount("#app");
