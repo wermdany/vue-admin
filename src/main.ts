@@ -1,3 +1,4 @@
+import { EevOptions } from "@/types/env";
 import { createApp } from "vue";
 
 import App from "@/App.vue";
@@ -9,8 +10,6 @@ import { isDev } from "@/var/env";
 
 const app = createApp(App);
 
-console.log(process.env);
-
 setupVueI18n(app);
 
 setupVueRouter(app);
@@ -21,8 +20,11 @@ router.isReady().then(() => {
   app.mount("#app");
 });
 
+window.__ENV__ = (process.env as unknown) as EevOptions;
+
 //在开发环境启动调试
 if (isDev()) {
   app.config.performance = true;
   window.__APP__ = app;
+  console.log(window.__ENV__);
 }

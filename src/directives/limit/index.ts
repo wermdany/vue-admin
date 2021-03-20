@@ -26,10 +26,10 @@ const inputLimit: ObjectDirective = {
       throw TypeError("构建过滤方法失败, value 既不是 Function 也不是 Regexp");
     }
     // 输入事件
-    inputEl._input_ = function(e: any) {
+    inputEl.input = function(e: any) {
       const wish = filterFun(e.target.value);
       //减少混合输入下input频繁触发，只有存在不合理的才会格式化，ios光标跳至最后
-      if (!inputEl?._composing_ && e.target.value !== wish) {
+      if (!inputEl?.composing && e.target.value !== wish) {
         e.target.value = wish;
         setTimeout(function() {
           e.target.value = wish;
@@ -38,12 +38,12 @@ const inputLimit: ObjectDirective = {
       }
     };
     // 组合输入开始
-    inputEl._compositionstart_ = function() {
-      inputEl._composing_ = true;
+    inputEl.compositionstart = function() {
+      inputEl.composing = true;
     };
-    inputEl._compositionend_ = function(e: any) {
+    inputEl.compositionend = function(e: any) {
       const wish = filterFun(e.target.value);
-      inputEl._composing_ = false;
+      inputEl.composing = false;
       //只有存在不合理的才会格式化，ios光标跳至最后
       if (e.target.value !== wish) {
         e.target.value = wish;
@@ -56,20 +56,20 @@ const inputLimit: ObjectDirective = {
 
     inputEl.addEventListener(
       "compositionstart",
-      inputEl._compositionstart_,
+      inputEl.compositionstart,
       false
     );
-    inputEl.addEventListener("compositionend", inputEl._compositionend_, false);
-    inputEl.addEventListener("input", inputEl._input_, false);
+    inputEl.addEventListener("compositionend", inputEl.compositionend, false);
+    inputEl.addEventListener("input", inputEl.input, false);
   },
   beforeUnmount(el) {
     let inputEl: any = findElementByName(el, "input");
     if (!inputEl) {
       inputEl = findElementByName(el, "textarea");
     }
-    inputEl.removeEventListener("compositionstart", inputEl._compositionstart_);
-    inputEl.removeEventListener("compositionend", inputEl._compositionend_);
-    inputEl.removeEventListener("input", inputEl._input_);
+    inputEl.removeEventListener("compositionstart", inputEl.compositionstart);
+    inputEl.removeEventListener("compositionend", inputEl.compositionend);
+    inputEl.removeEventListener("input", inputEl.input);
   }
 };
 

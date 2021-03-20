@@ -8,3 +8,7 @@ export interface EevOptions {
   VUE_APP_REQUEST_BASE_URL: string;
   VUE_APP_RUN_ENV: string;
 }
+
+declare module "process" {
+  const env: EevOptions;
+}
