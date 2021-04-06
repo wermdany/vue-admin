@@ -4,5 +4,22 @@
 			"path": ".."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"cSpell.words": [
+			"scripthost"
+		],
+		"editor.formatOnType": true,
+		"eslint.packageManager": "yarn",
+		"eslint.validate": [
+			"typescript"
+		],
+		"vetur.validation.templateProps": true,
+		"vetur.experimental.templateInterpolationService": true,
+		"files.eol": "\r\n",
+		"typescript.tsdk": "node_modules\\typescript\\lib",
+		"eslint.format.enable": true,
+		"oneDarkPro.vivid": true,
+		"prettier.configPath": ".prettierrc",
+		"prettier.endOfLine": "crlf"
+	}
 }

@@ -7,7 +7,8 @@
     "build": "vue-cli-service build",
     "inspect": "vue-cli-service inspect --mode prod > webpack.js",
     "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint --mode lint",
+    "lint": "vue-cli-service lint --mode lint \"{src,build,mock}/**/*.{vue,js,ts,tsx}\" --fix",
+    "prettier": "prettier --write \"{src,build,mock}/**/*.{js,json,jsx,ts,tsx,less,vue,html,md}\"",
     "commit": "git add . && node_modules/.bin/cz",
     "push": "git push origin dev"
   },
@@ -49,7 +50,7 @@
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
     "lint-staged": "^9.5.0",
-    "prettier": "^1.19.1",
+    "prettier": "2.2.1",
     "typescript": "~3.9.3",
     "vue-jest": "^5.0.0-0"
   },

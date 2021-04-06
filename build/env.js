@@ -8,7 +8,7 @@ const env = process.env;
  *
  * @returns envs 环境变量
  */
-const getEnv = function() {
+const getEnv = function () {
   const envs = {
     NODE_ENV: env.NODE_ENV
   };
@@ -19,7 +19,7 @@ const getEnv = function() {
   }
   return envs;
 };
-const getGitHash = function() {
+const getGitHash = function () {
   try {
     const git = new gitRevisionPlugin();
     return git.commithash();

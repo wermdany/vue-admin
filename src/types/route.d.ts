@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import type { RouteRecordRaw } from "vue-router";
-import type { Component } from "./global"
+import type { Component } from "./global";
 
 export interface RouteMapItem {
   /** 组件映射 */
