@@ -1,8 +1,8 @@
 import { App } from "vue";
-import { EevOptions } from "./env";
+import { EnvOptions } from "./env";
 declare global {
   declare interface Window {
     __APP__: App<Element>;
-    __ENV__: EevOptions;
+    __ENV__: EnvOptions;
   }
 }

@@ -1,4 +1,4 @@
-export interface EevOptions {
+export interface EnvOptions {
   APP_VERSION: string;
   BASE_URL: string;
   BUILD_TIME: string;
@@ -9,6 +9,12 @@ export interface EevOptions {
   VUE_APP_RUN_ENV: string;
 }
 
-declare module "process" {
-  const env: EevOptions;
+declare global {
+  namespace NodeJS {
+    interface Process extends NodeJS.Process {
+      env: EnvOptions;
+    }
+  }
 }
+
+declare const process: NodeJS.Process;

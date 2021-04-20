@@ -1,4 +1,3 @@
-import { EevOptions } from "@/types/env";
 import { createApp } from "vue";
 
 import App from "@/App.vue";
@@ -20,7 +19,7 @@ router.isReady().then(() => {
   app.mount("#app");
 });
 
-window.__ENV__ = (process.env as unknown) as EevOptions;
+window.__ENV__ = process.env;
 
 //在开发环境启动调试
 if (isDev()) {

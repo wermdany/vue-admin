@@ -1,10 +1,10 @@
-import { EevOptions } from "@/types/env";
-
 /** 环境变量 */
-export const env = (process.env as unknown) as EevOptions;
+export const env = process.env;
+
+type EnvKeys = typeof env;
 
 /** 根据 key 获取 环境变量的值 */
-export const getEnvOptions = (options: keyof EevOptions) => env[options];
+export const getEnvOptions = (options: keyof EnvKeys) => env[options];
 
 /** 是否是开发环境 */
 export const isDev = () => getEnvOptions("NODE_ENV") === "development";
