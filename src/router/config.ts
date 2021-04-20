@@ -1,5 +1,6 @@
-import { RouteRecordRaw } from "vue-router";
-import { __HOME_PAGE__, __NONE_PAGE__ } from "@/var/symbol";
+import type { RouteRecordRaw } from "vue-router";
+import { __HOME_PAGE__, __NONE_PAGE__ } from "@/utils/symbol";
+
 /** 默认首页 */
 export const HOME_PAGE: RouteRecordRaw[] = [
   {
@@ -9,8 +10,7 @@ export const HOME_PAGE: RouteRecordRaw[] = [
   }
 ];
 
-/**  */
-
+/** 全局后置匹配规则  */
 export const NONE_PAGE: RouteRecordRaw[] = [
   {
     path: "/:_(.*)*",

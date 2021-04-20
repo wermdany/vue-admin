@@ -11,8 +11,9 @@ import {
   getUseRouteMap,
   giveRouteConfigUseComponent
 } from "./generator";
+
 import { HOME_PAGE, NONE_PAGE } from "./config";
-import { App } from "vue";
+import type { App } from "vue";
 import { createGuard } from "./guard";
 
 let routes = giveRouteConfigUseComponent(

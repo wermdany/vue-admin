@@ -118,6 +118,6 @@ export function isRegExp<T>($: T): boolean {
 }
 
 /** 是否是 Promise 类型 */
-export function isPromise<T = any>($: any): $ is Promise<T> {
+export function isPromise<T = any>($: any): boolean {
   return is($, TypeEnum.Promise) && isFun($.then) && isFun($.catch);
 }

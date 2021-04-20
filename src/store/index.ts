@@ -1,10 +1,8 @@
 import { createStore } from "vuex";
-import { App } from "vue";
+import type { App } from "vue";
 
 const store = createStore({
-  state: {
-    a: 1
-  },
+  state: {},
   mutations: {},
   actions: {},
   modules: {}

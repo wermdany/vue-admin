@@ -5,7 +5,7 @@ import App from "@/App.vue";
 import router, { setupVueRouter } from "@/router";
 import { setupVueStore } from "@/store";
 import { setupVueI18n } from "@/locales";
-import { isDev } from "@/var/env";
+import { isDev } from "@/utils/env";
 
 const app = createApp(App);
 
@@ -22,7 +22,7 @@ router.isReady().then(() => {
 window.__ENV__ = process.env;
 
 //在开发环境启动调试
-if (isDev()) {
+if (isDev) {
   app.config.performance = true;
   window.__APP__ = app;
   console.log(window.__ENV__);
