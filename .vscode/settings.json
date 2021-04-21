@@ -1,5 +1,12 @@
 {
   "editor.fontSize": 22,
   "editor.tabSize": 2,
-  "eslint.format.enable": true
+  "eslint.format.enable": true,
+  "cSpell.words": [
+    "Pinia"
+  ],
+  "eslint.packageManager": "yarn",
+  "eslint.validate": [
+    "typescript"
+  ]
 }

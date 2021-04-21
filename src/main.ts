@@ -3,7 +3,7 @@ import { createApp } from "vue";
 import App from "@/App.vue";
 
 import router, { setupVueRouter } from "@/router";
-import { setupVueStore } from "@/store";
+import { setupStore } from "@/store";
 import { setupVueI18n } from "@/locales";
 import { isDev } from "@/utils/env";
 
@@ -13,7 +13,7 @@ setupVueI18n(app);
 
 setupVueRouter(app);
 
-setupVueStore(app);
+setupStore(app);
 
 router.isReady().then(() => {
   app.mount("#app");

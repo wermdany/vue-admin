@@ -1,11 +1,8 @@
-const { resolve } = require("../path");
+const { getThemeVariables } = require("ant-design-vue/dist/theme");
 
 const less = {
   javascriptEnabled: true,
-  modifyVars: {
-    hack: `true;@import "${resolve("./src/styles/ant-design-vue/index.less")}";`
-    // @import "${resolve("./src/styles/ant-design-vue/dark.less")}";
-  }
+  modifyVars: getThemeVariables()
 };
 
 module.exports = less;
