@@ -1,4 +1,4 @@
-import { SelfRouteMap } from "@/types/route";
+import type { SelfRouteMap } from "#/route";
 
 const map: SelfRouteMap = {
   LOGIN: {

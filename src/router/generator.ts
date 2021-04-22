@@ -2,7 +2,7 @@
  * "./login/route/map.ts"
  */
 
-import type { SelfRouteMap, SelfRouteRaw, RouteMapItem } from "@/types/route";
+import type { SelfRouteMap, SelfRouteRaw, RouteMapItem } from "#/route";
 import { join } from "path";
 
 type AllRouteMap = Map<string, SelfRouteMap>;

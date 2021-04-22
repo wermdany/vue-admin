@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import type { RouteRecordRaw } from "vue-router";
 import type { Component } from "./global";
 

@@ -1,4 +1,4 @@
-import { SelfRouteRaw } from "@/types/route";
+import type { SelfRouteRaw } from "#/route";
 
 const route: Array<SelfRouteRaw> = [
   {

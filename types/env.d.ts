@@ -1,5 +1,7 @@
 export interface EnvOptions {
+  /** 当前应用版本号 */
   APP_VERSION: string;
+  /**  */
   BASE_URL: string;
   BUILD_TIME: string;
   GIT_HASH: string;
