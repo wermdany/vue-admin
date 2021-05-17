@@ -20,7 +20,8 @@ export enum TypeEnum {
   FormData = "FormData",
   Date = "Date",
   RegExp = "RegExp",
-  Promise = "Promise"
+  Promise = "Promise",
+  window = "window"
 }
 
 /** 获取类型 */
@@ -33,91 +34,120 @@ export function is<T>($: T, type: TypeEnum): boolean {
 }
 
 /** 是否是数字类型 */
-export function isNumber<T>($: T): boolean {
+export function isNumber($: unknown): $ is number {
   return is($, TypeEnum.Number);
 }
 
 /** 是否是 NaN */
-export function isNaN<T>($: T): boolean {
+export function isNaN<T>($: T): $ is T {
   return $ !== $;
 }
 
 /** 是否是 boolean */
-export function isBoolean<T>($: T): boolean {
+export function isBool($: unknown): $ is boolean {
   return is($, TypeEnum.Boolean);
 }
 
 /** 是否是字符串类型 */
-export function isString<T>($: T): boolean {
+export function isString($: unknown): $ is string {
   return is($, TypeEnum.String);
 }
 
 /** 是否是对象类型 */
-export function isObject<T>($: T): boolean {
+export function isObject($: any): $ is Record<any, any> {
   return is($, TypeEnum.Object);
 }
 
 /** 是否是数组类型 */
-export function isArray<T>($: T): boolean {
+export function isArray($: any): $ is Array<any> {
   return is($, TypeEnum.Array);
 }
 
 /** 是否是函数类型 */
-export function isFun<T>($: T): boolean {
+export function isFun($: unknown): $ is Function {
   return is($, TypeEnum.Function);
 }
 
 /** 是否是 undefined */
-export function isUndefined<T>($: T): boolean {
+export function isUndefined($: unknown): $ is undefined {
   return is($, TypeEnum.Undefined);
 }
 
 /** 是否是 null */
-export function isNull<T>($: T): boolean {
+export function isNull($: unknown): $ is null {
   return is($, TypeEnum.Null);
 }
 
 /** 是否定义 */
-export function isDef<T>($: T): boolean {
+export function isDef($: unknown): $ is null | undefined {
   return !isNull($) && !isUndefined($);
 }
 
 /** 是否是 blob 类型 */
-export function isBlob<T>($: T): boolean {
+export function isBlob($: unknown): $ is Blob {
   return is($, TypeEnum.Blob);
 }
 
 /** 是否是 file 类型 */
-export function isFile<T>($: T): boolean {
+export function isFile($: unknown): $ is File {
   return is($, TypeEnum.File);
 }
 
 /** 是否是 map 类型 */
-export function isMap<T>($: T): boolean {
+export function isMap($: unknown): $ is Map<any, any> {
   return is($, TypeEnum.Map);
 }
 
 /** 是否是 set 类型 */
-export function isSet<T>($: T): boolean {
+export function isSet($: unknown): $ is Set<any> {
   return is($, TypeEnum.Set);
 }
 
 /** 是否是 formData 类型 */
-export function isFormData<T>($: T): boolean {
+export function isFormData($: unknown): $ is FormData {
   return is($, TypeEnum.FormData);
 }
 
 /** 是否是 Data 类型 */
-export function isDate<T>($: T): boolean {
+export function isDate($: unknown): $ is Date {
   return is($, TypeEnum.Date);
 }
 
 /** 是否是 RegExp 类型 */
-export function isRegExp<T>($: T): boolean {
+export function isRegExp($: unknown): $ is RegExp {
   return is($, TypeEnum.RegExp);
 }
 
 /** 是否是 Promise 类型 */
-export function isPromise<T = any>($: any): boolean {
-  return is($, TypeEnum.Promise) && isFun($.then) && isFun($.catch);
+export function isPromise<T = any>($: any): $ is Promise<T> {
+  return (
+    is($, TypeEnum.Promise) && isObject($) && isFun($.then) && isFun($.catch)
+  );
+}
+
+/** 是否是 window 类型 */
+export function isWindow($: any): $ is Window {
+  return typeof window !== "undefined" && is($, TypeEnum.window);
+}
+
+/** 是否是 element 类型 */
+export function isElement($: unknown): $ is Element {
+  return isObject($) && !!$.tagName;
+}
+
+/** 是否是空 */
+export function isEmpty<T = unknown>($: T): $ is T {
+  if (isArray($) || isString($)) {
+    return $.length === 0;
+  }
+
+  if (isSet($) || isMap($)) {
+    return $.size === 0;
+  }
+
+  if (isObject($)) {
+    return Object.keys($).length === 0;
+  }
+
+  return false;
 }

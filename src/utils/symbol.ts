@@ -1,4 +1,4 @@
 /** 重定向首页 */
-export const __HOME_PAGE__ = Symbol("HOME_PAGE");
+export const _HOME_PAGE_ = Symbol("HOME_PAGE");
 /** 404页面 */
-export const __NONE_PAGE__ = Symbol("NONE_PAGE");
+export const _NONE_PAGE_ = Symbol("NONE_PAGE");
