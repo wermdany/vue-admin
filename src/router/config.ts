@@ -1,5 +1,5 @@
 import type { RouteRecordRaw } from "vue-router";
-import { _HOME_PAGE_, _NONE_PAGE_ } from "@/utils/symbol";
+import { _HOME_PAGE_, _NONE_PAGE_ } from "@/settings";
 
 /** 默认首页 */
 export const HOME_PAGE: RouteRecordRaw[] = [

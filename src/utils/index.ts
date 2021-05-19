@@ -4,8 +4,6 @@ export * from "./el";
 
 export * from "./web";
 
-export * from "./replace";
+export * from "./parse";
 
 export * from "./env";
-
-export * from "./symbol";

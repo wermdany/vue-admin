@@ -21,7 +21,7 @@ export interface SelfRouteMeta {
 /** 重定路由规则 */
 export interface SelfRouteRaw extends Omit<RouteRecordRaw, "meta"> {
   name?: string;
-  meta?: RouteMeta;
+  meta?: SelfRouteMeta;
   component?: Component | string;
   children?: SelfRouteRaw[];
   props?: Recordable;

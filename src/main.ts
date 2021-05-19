@@ -5,25 +5,26 @@ import App from "@/App.vue";
 import router, { setupVueRouter } from "@/router";
 import { setupStore } from "@/store";
 import { setupVueI18n } from "@/locales";
-import { isDev } from "@/utils/env";
+import { isDev, env as ENV } from "@/utils";
 
-const app = createApp(App);
+(async () => {
+  const app = createApp(App);
 
-setupVueI18n(app);
+  setupVueRouter(app);
 
-setupVueRouter(app);
+  setupStore(app);
 
-setupStore(app);
+  setupVueI18n(app);
 
-router.isReady().then(() => {
+  await router.isReady();
   app.mount("#app");
-});
 
-window.__ENV__ = process.env;
+  window.__ENV__ = ENV;
 
-//在开发环境启动调试
-if (isDev) {
-  app.config.performance = true;
-  window.__APP__ = app;
-  console.log(window.__ENV__);
-}
+  //在开发环境启动调试
+  if (isDev) {
+    app.config.performance = true;
+    window.__APP__ = app;
+    console.log(window.__ENV__);
+  }
+})();

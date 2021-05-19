@@ -1,3 +1,8 @@
+/**
+ *与 环境变量 相关的方法
+ *
+ */
+
 /** 环境变量 */
 export const env = process.env;
 

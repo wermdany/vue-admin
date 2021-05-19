@@ -1,9 +1,7 @@
 /**
- *与 HTML 相关的方法
+ *与 DOM 相关的方法
  *
  */
-
-type FindElementByNameReturn = Element | null;
 
 /**
  *在某个节点下查找某个标签名
@@ -15,11 +13,11 @@ type FindElementByNameReturn = Element | null;
  */
 export function findElementByName(
   element: Element,
-  elementName: string
-): FindElementByNameReturn {
+  elementName: keyof HTMLElementTagNameMap
+) {
   return element.tagName.toLowerCase() === elementName.toLowerCase()
     ? element
-    : element.querySelector("elementName");
+    : element.querySelector(elementName);
 }
 
 /**
@@ -30,8 +28,13 @@ export function findElementByName(
  * @param {Element} element 需要触发事件的元素
  * @param {string} type 触发的事件名
  */
-export function triggerEvent(element: Element, type: string): void {
+export function triggerEvent(
+  element: Element,
+  type: keyof HTMLElementEventMap,
+  bubbles = true,
+  cancelable = true
+): void {
   const event = document.createEvent("HTMLEvents");
-  event.initEvent(type, true, true);
+  event.initEvent(type, bubbles, cancelable);
   element.dispatchEvent(event);
 }

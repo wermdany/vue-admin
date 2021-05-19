@@ -1,5 +1,6 @@
 /**
  * 类型判断
+ *
  */
 
 const toString = Object.prototype.toString;
