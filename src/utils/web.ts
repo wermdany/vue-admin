@@ -1,4 +1,7 @@
-import type { AvailableLocalesTypeValues } from "@/locales/config";
+/**
+ *与 web能力 相关的方法
+ *
+ */
 
 /**
  *获取本机语言
@@ -17,14 +20,4 @@ export function getLocalLanguage() {
  */
 export function getLocalLanguages() {
   return window.navigator.languages;
-}
-
-/**
- *设置 HTML 标签的 lang
- * @param lang
- */
-export function setHTMLLang<T extends AvailableLocalesTypeValues>(
-  lang: T
-): void {
-  document.documentElement.lang = lang as string;
 }

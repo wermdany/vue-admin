@@ -1,4 +1,5 @@
 import { RouteLocationNormalized, useRoute } from "vue-router";
+import type { AvailableLocalesTypeValues } from "#/locales";
 import {
   getLocalLanguage,
   isBool,
@@ -10,8 +11,7 @@ import {
   fallbackLanguagesMap,
   availableLocales,
   urlQueryKey,
-  defaultLocale,
-  AvailableLocalesTypeValues
+  defaultLocale
 } from "./config";
 
 type FallbackLanguagesMapKey = keyof typeof fallbackLanguagesMap;

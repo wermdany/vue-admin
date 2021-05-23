@@ -3,6 +3,8 @@
  *
  */
 
+import type { AvailableLocalesTypeValues } from "#/locales";
+
 /**
  *在某个节点下查找某个标签名
  *
@@ -37,4 +39,14 @@ export function triggerEvent(
   const event = document.createEvent("HTMLEvents");
   event.initEvent(type, bubbles, cancelable);
   element.dispatchEvent(event);
+}
+
+/**
+ *设置 HTML 标签的 lang
+ * @param lang
+ */
+export function setHTMLLang<T extends AvailableLocalesTypeValues>(
+  lang: T
+): void {
+  document.documentElement.lang = lang as string;
 }

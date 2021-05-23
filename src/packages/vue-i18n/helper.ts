@@ -1,4 +1,4 @@
-import type { AvailableLocalesTypeValues } from "@/locales/config";
+import type { AvailableLocalesTypeValues } from "#/locales";
 import type { Ref } from "vue";
 import vueI18n from "./";
 
@@ -35,6 +35,6 @@ export function changeUseLocal(lang: AvailableLocalesTypeValues) {
   if (vueI18n.mode === "legacy") {
     vueI18n.global.locale = lang;
   } else {
-    ((vueI18n.global.locale as unknown) as Ref<string>).value = lang;
+    (vueI18n.global.locale as unknown as Ref<string>).value = lang;
   }
 }

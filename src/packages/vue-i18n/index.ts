@@ -16,7 +16,11 @@ export const vueI18nOptions: I18nOptions = {
   silentFallbackWarn: true,
   locale: "",
   fallbackLocale: fallbackLocale,
-  messages: {}
+  messages: {
+    "zh-cn": {
+      as: "1"
+    }
+  }
 };
 
 const vueI18n = createI18n(vueI18nOptions);
