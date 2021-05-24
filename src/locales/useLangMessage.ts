@@ -15,8 +15,12 @@ export async function useLangMessage(
   namespace: SystemModule,
   lang: AvailableLocalesTypeValues
 ): Promise<object> {
-  const path = (await import(`@/views/${namespace}/lang/${lang}.json`))
-    .default as string;
+  const path = (
+    await import(
+      /* webpackMode: "lazy-once" */
+      `@/views/${namespace}/lang/${lang}.json`
+    )
+  ).default as string;
   try {
     const message = await axios.get(path, { baseURL: prefix });
     return message.data;

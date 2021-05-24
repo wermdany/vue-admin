@@ -54,9 +54,14 @@ export function isString($: unknown): $ is string {
   return is($, TypeEnum.String);
 }
 
-/** 是否是对象类型 */
+/** 是否是对象类型 绝对 */
 export function isObject($: any): $ is Record<any, any> {
   return is($, TypeEnum.Object);
+}
+
+/** 是否是对象类型 相对 */
+export function _isObject($: any): $ is Record<any, any> {
+  return typeof $ === "object" && $ !== null;
 }
 
 /** 是否是数组类型 */
@@ -74,14 +79,24 @@ export function isUndefined($: unknown): $ is undefined {
   return is($, TypeEnum.Undefined);
 }
 
-/** 是否是 null */
+/** 是否是 null 绝对 */
 export function isNull($: unknown): $ is null {
   return is($, TypeEnum.Null);
+}
+
+/** 是否是 null 相对 */
+export function _isNull($: unknown): $ is null {
+  return $ === null;
 }
 
 /** 是否定义 */
 export function isDef($: unknown): $ is null | undefined {
   return !isNull($) && !isUndefined($);
+}
+
+/** 是未否定义 */
+export function isUnDef<T = unknown>($: T): $ is T {
+  return !isDef($);
 }
 
 /** 是否是 blob 类型 */
@@ -122,7 +137,7 @@ export function isRegExp($: unknown): $ is RegExp {
 /** 是否是 Promise 类型 */
 export function isPromise<T = any>($: any): $ is Promise<T> {
   return (
-    is($, TypeEnum.Promise) && isObject($) && isFun($.then) && isFun($.catch)
+    is($, TypeEnum.Promise) && _isObject($) && isFun($.then) && isFun($.catch)
   );
 }
 
@@ -133,7 +148,7 @@ export function isWindow($: any): $ is Window {
 
 /** 是否是 element 类型 */
 export function isElement($: unknown): $ is Element {
-  return isObject($) && !!$.tagName;
+  return _isObject($) && !!$.tagName;
 }
 
 /** 是否是空 */

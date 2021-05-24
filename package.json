@@ -7,8 +7,8 @@
     "build": "vue-cli-service build",
     "inspect": "vue-cli-service inspect --mode prod > webpack.js",
     "test:unit": "vue-cli-service test:unit",
-    "eslint": "vue-cli-service lint --mode lint \"{src,build,mock}/**/*.{vue,js,ts,tsx}\" --fix",
-    "prettier": "prettier --write \"{src,build,mock}/**/*.{js,json,jsx,ts,tsx,less,vue,html,md}\"",
+    "eslint": "vue-cli-service lint --mode lint \"{src,build,mock,types}/**/*.{vue,js,ts,tsx}\" --fix",
+    "prettier": "prettier --write \"{src,build,mock,types}/**/*.{js,json,jsx,ts,tsx,less,vue,html,md}\"",
     "lint": " yarn eslint && yarn prettier",
     "commit": "git add . && node_modules/.bin/cz",
     "push": "git push origin dev"

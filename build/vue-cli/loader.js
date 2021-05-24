@@ -10,7 +10,6 @@ module.exports = config => {
     .test(/\w+[\\/]lang[\\/][a-z]{2}_[A-Z]{2}\.json$/)
     .use("file-loader")
     .loader("file-loader")
-    // .type("javascript/auto")
     .options({
       outputPath: "lang",
       regExp: /(\w+)[\\/]lang[\\/][a-z]{2}_[A-Z]{2}\.json/,

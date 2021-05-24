@@ -1,6 +1,6 @@
 import type { RouteRecordRaw } from "vue-router";
 import type { Component } from "./global";
-
+import type { SystemModule } from "./settings";
 export interface RouteMapItem {
   /** 组件映射 */
   component: Component;
@@ -16,6 +16,7 @@ export interface SelfRouteMap {
 /** 路由元数据 */
 export interface SelfRouteMeta {
   title: string;
+  module: SystemModule;
 }
 
 /** 重定路由规则 */
