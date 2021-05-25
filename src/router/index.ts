@@ -12,7 +12,7 @@ import {
   giveRouteConfigUseComponent
 } from "./generator";
 
-import { HOME_PAGE, NONE_PAGE } from "./config";
+import { HOME_PAGE, NONE_PAGE } from "./var";
 import type { App } from "vue";
 import { createGuard } from "./guard";
 

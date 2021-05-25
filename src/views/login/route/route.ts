@@ -1,9 +1,14 @@
-import type { SelfRouteRaw } from "#/route";
+import type { SelfRouteRecordRaw } from "#/route";
 
-const route: Array<SelfRouteRaw> = [
+const route: Array<SelfRouteRecordRaw> = [
   {
     path: "/login",
-    component: "LOGIN"
+    component: "LOGIN",
+    name: "login",
+    meta: {
+      module: "login",
+      title: "登录"
+    }
   }
 ];
 

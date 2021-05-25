@@ -1,4 +1,4 @@
-import { RouteLocationNormalized, useRoute } from "vue-router";
+import { useRoute, RouteLocationNormalized } from "vue-router";
 import type { AvailableLocalesTypeValues } from "#/locales";
 import {
   getLocalLanguage,
@@ -73,10 +73,12 @@ function useBrowserLanguage() {
 export function getUseLanguage(routeRecord?: RouteLocationNormalized) {
   let language: string | false = "";
 
-  //获取 url 中的语言
+  // 获取 url 中的语言
   if (!isUndefined(routeRecord)) {
     language = useUrlQueryLanguage(routeRecord);
   }
+
+  // TODO: 系统缓存的
 
   // 使用系统默认语言
   if (!language) {

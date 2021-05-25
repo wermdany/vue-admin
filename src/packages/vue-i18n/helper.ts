@@ -3,17 +3,19 @@ import type { Ref } from "vue";
 import vueI18n from "./";
 
 /** 获取当前某语言的国际化语言配置 */
-export function getNowLocaleMessageByLang(lang: AvailableLocalesTypeValues) {
+export function getI18nNowLocaleMessageByLang(
+  lang: AvailableLocalesTypeValues
+) {
   return vueI18n.global.getLocaleMessage(lang);
 }
 
 /** 获取当前所有的国际化文案配置 */
-export function getNowAllLocaleMessage() {
+export function getI18nNowAllLocaleMessage() {
   return vueI18n.global.messages;
 }
 
 /** 向当前国际化中追加语言和翻译文案 */
-export function setLocaleMessage<M extends Record<any, any>>(
+export function setI18nLocaleMessage<M extends Record<any, any>>(
   lang: AvailableLocalesTypeValues,
   message: M
 ) {
@@ -21,7 +23,7 @@ export function setLocaleMessage<M extends Record<any, any>>(
 }
 
 /** 合并某语言下的国际化翻译文案 */
-export function mergeLocaleMessage<M extends Record<any, any>>(
+export function mergeI18nLocaleMessage<M extends Record<any, any>>(
   lang: AvailableLocalesTypeValues,
   message: M
 ) {
@@ -31,7 +33,7 @@ export function mergeLocaleMessage<M extends Record<any, any>>(
 /**
  *切换当前使用的语言
  */
-export function changeUseLocal(lang: AvailableLocalesTypeValues) {
+export function changeI18nUseLocale(lang: AvailableLocalesTypeValues) {
   if (vueI18n.mode === "legacy") {
     vueI18n.global.locale = lang;
   } else {

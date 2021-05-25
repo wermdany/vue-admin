@@ -10,11 +10,11 @@ import { isDev, env as ENV } from "@/utils";
 (async () => {
   const app = createApp(App);
 
-  setupVueRouter(app);
-
   setupStore(app);
 
   setupVueI18n(app);
+
+  setupVueRouter(app);
 
   await router.isReady();
   app.mount("#app");

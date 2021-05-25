@@ -45,7 +45,7 @@ export function triggerEvent(
  *设置 HTML 标签的 lang
  * @param lang
  */
-export function setHTMLLang<T extends AvailableLocalesTypeValues>(
+export function changeHTMLUseLocale<T extends AvailableLocalesTypeValues>(
   lang: T
 ): void {
   document.documentElement.lang = lang as string;
