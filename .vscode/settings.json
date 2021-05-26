@@ -3,7 +3,8 @@
   "editor.tabSize": 2,
   "eslint.format.enable": true,
   "cSpell.words": [
-    "Pinia"
+    "Pinia",
+    "antd"
   ],
   "eslint.packageManager": "yarn",
   "eslint.validate": [

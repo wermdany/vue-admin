@@ -26,7 +26,7 @@ export interface SelfRouteMeta {
 }
 
 /** 路由规则 */
-interface RouteRecordSelf extends _RouteRecordBase {
+interface RouteRecordRawSelf extends _RouteRecordBase {
   component?: Component | Lazy<Component> | string;
   children?: RouteRecordSelf[];
   components?: never;
@@ -40,5 +40,5 @@ declare module "vue-router" {
   /** 重定路由元数据规则 */
   export declare interface RouteMeta extends SelfRouteMeta {}
   /** 重定路由规则 */
-  export declare type RouteRecordSelf = RouteRecordSelf;
+  export declare type RouteRecordSelf = RouteRecordRawSelf;
 }

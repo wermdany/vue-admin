@@ -2,7 +2,8 @@
  * "./login/route/map.ts"
  */
 
-import type { SelfRouteMap, RouteRecordSelf, RouteMapItem } from "#/route";
+import type { SelfRouteMap, RouteMapItem } from "#/route";
+import type { RouteRecordSelf } from "vue-router";
 import { join } from "path";
 
 type AllRouteMap = Map<string, SelfRouteMap>;

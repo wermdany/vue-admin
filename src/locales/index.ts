@@ -2,7 +2,7 @@ import type { App } from "vue";
 
 import vueI18n from "@/packages/vue-i18n";
 
-export * from "./helper";
+export * from "./useLang";
 
 export * from "./config";
 
