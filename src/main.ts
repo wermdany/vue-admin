@@ -17,6 +17,7 @@ import { isDev, env as ENV } from "@/utils";
   setupVueRouter(app);
 
   await router.isReady();
+
   app.mount("#app");
 
   window.__ENV__ = ENV;

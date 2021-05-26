@@ -4,7 +4,7 @@
 
 module.exports = config => {
   config.module
-    .rule("lang")
+    .rule("locale")
     .type("javascript/auto")
     .pre()
     .test(/\w+[\\/]lang[\\/][a-z]{2}_[A-Z]{2}\.json$/)

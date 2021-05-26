@@ -44,7 +44,8 @@ module.exports = {
         argsIgnorePattern: "^_",
         varsIgnorePattern: "^_"
       }
-    ]
+    ],
+    "@typescript-eslint/no-empty-interface": "off"
   },
   overrides: [
     {

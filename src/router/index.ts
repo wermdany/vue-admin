@@ -88,5 +88,8 @@ export default router;
 
 export function setupVueRouter(app: App) {
   app.use(router);
+
+  console.log("Router", Date.now());
+
   createGuard(router);
 }

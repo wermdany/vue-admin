@@ -1,6 +1,5 @@
-import type { SelfRouteRecordRaw } from "#/route";
-
-const route: Array<SelfRouteRecordRaw> = [
+import type { RouteRecordSelf } from "vue-router";
+const route: Array<RouteRecordSelf> = [
   {
     path: "/login",
     component: "LOGIN",

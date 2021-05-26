@@ -1,4 +1,4 @@
-import { parseLanguage } from "../parse";
+import { parseLanguage, pickLangMsgFileHash } from "../parse";
 
 describe("test utils > parse > parseLanguage", () => {
   it("zh => zh", () => {
@@ -30,5 +30,27 @@ describe("test utils > parse > parseLanguage", () => {
   });
   it("null => 'nu'", () => {
     expect(parseLanguage("null")).toBe("nu");
+  });
+});
+
+describe("test utils > parse > pickLangMsgFileHash", () => {
+  it("http://localhost:8080/lang/login-zh_CN.0c6e5cf7.json", () => {
+    expect(
+      pickLangMsgFileHash(
+        "http://localhost:8080/lang/login-zh_CN.0c6e5cf7.json"
+      )
+    ).toBe("0c6e5cf7");
+  });
+  it("empty string", () => {
+    expect(pickLangMsgFileHash("")).toBe("");
+  });
+  it(".0c6e5cf75s7.json", () => {
+    expect(pickLangMsgFileHash(".0c6e5cf75s7.json")).toBe("");
+  });
+  it(".0c6e7.json", () => {
+    expect(pickLangMsgFileHash(".0c6e7.json")).toBe("");
+  });
+  it("undefined", () => {
+    expect(pickLangMsgFileHash(undefined)).toBe("");
   });
 });

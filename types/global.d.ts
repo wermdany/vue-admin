@@ -1,9 +1,7 @@
-import { defineComponent } from "vue";
 /** 组件 */
-export type Component<T extends any = any> =
-  | ReturnType<typeof defineComponent>
-  | (() => Promise<typeof import("*.vue")>)
-  | (() => Promise<T>);
+export { Component } from "vue";
 
 /** 空值类型 */
 export type NullOrUndefined = undefined | null;
+
+export type Lazy<T> = () => Promise<T>;

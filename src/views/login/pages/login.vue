@@ -12,8 +12,8 @@
 import { defineComponent, ref } from "vue";
 import { Button } from "ant-design-vue";
 import { useI18n } from "vue-i18n";
-import { useSystemStore } from "@/store/system";
-import { useLocaleStore } from "@/store/locale";
+import { useSystemStore, useLocaleStore } from "@/store";
+
 export default defineComponent({
   name: "LOGIN",
   components: {

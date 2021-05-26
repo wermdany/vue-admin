@@ -47,3 +47,18 @@ export function parseLanguage(lang: string) {
   }
   return prefix.toLowerCase();
 }
+
+/**
+ *提取国际化语言文件名的 Hash 用来区分此语言文件是否改变
+ * @param {string} path
+ */
+export function pickLangMsgFileHash(path: string | undefined) {
+  if (!path) return "";
+  const pickReg = /\.([a-z0-9]{8})\.json$/;
+  const match = path.match(pickReg) as Array<string>;
+  const hash = match?.[1];
+  if (!hash) {
+    return "";
+  }
+  return hash;
+}

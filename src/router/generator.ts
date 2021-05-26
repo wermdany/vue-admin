@@ -2,11 +2,11 @@
  * "./login/route/map.ts"
  */
 
-import type { SelfRouteMap, SelfRouteRecordRaw, RouteMapItem } from "#/route";
+import type { SelfRouteMap, RouteRecordSelf, RouteMapItem } from "#/route";
 import { join } from "path";
 
 type AllRouteMap = Map<string, SelfRouteMap>;
-type AllRouteConfig = Map<string, SelfRouteRecordRaw[]>;
+type AllRouteConfig = Map<string, RouteRecordSelf[]>;
 
 /** 匹配映射模块名 */
 const mapModuleNameReg = /^\.\/(\w+)\/route\/map\.ts$/;
@@ -88,7 +88,7 @@ export function getUseRouteMap(routeMap: AllRouteMap) {
  * @export
  */
 export function getUseRouteConfig(routeConfig: AllRouteConfig) {
-  let res: SelfRouteRecordRaw[] = [];
+  let res: RouteRecordSelf[] = [];
   for (const iterator of routeConfig.values()) {
     res = res.concat(iterator);
   }
@@ -104,9 +104,9 @@ export function getUseRouteConfig(routeConfig: AllRouteConfig) {
  */
 export function giveRouteConfigUseComponent(
   allMap: Map<string, RouteMapItem>,
-  useConfig: SelfRouteRecordRaw[]
+  useConfig: RouteRecordSelf[]
 ) {
-  const res: SelfRouteRecordRaw[] = [];
+  const res: RouteRecordSelf[] = [];
   useConfig.forEach(item => {
     const node = item;
     if (!allMap.has(<string>item.component)) {

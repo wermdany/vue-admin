@@ -1,16 +1,16 @@
 import type { AvailableLocalesTypeValues } from "#/locales";
-
+import { defaultLocale } from "@/locales";
 import { defineStore } from "pinia";
 import Store from "@/store";
 
 interface LocaleState {
-  locale: AvailableLocalesTypeValues | "";
+  lang: AvailableLocalesTypeValues;
 }
 
 const useLocaleStore = defineStore({
   id: "locale",
   state: (): LocaleState => ({
-    locale: ""
+    lang: defaultLocale
   }),
   actions: {
     /**
@@ -18,7 +18,7 @@ const useLocaleStore = defineStore({
      * @param lang 要设置的语言
      */
     changeStoreUseLocale(lang: AvailableLocalesTypeValues) {
-      this.locale = lang;
+      this.lang = lang;
     }
   }
 });
