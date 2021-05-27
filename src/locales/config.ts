@@ -6,11 +6,16 @@ export const defaultLocale = "zh_CN";
 /** 回退语言，当语言下某个翻译不存在时，则会回退至此语言的翻译 */
 export const fallbackLocale = "zh_CN";
 
+/** 当前系统支持的语言列表 */
+export const availableLocaleList = {
+  zh_CN: "简体中文",
+  en_US: "English (US)"
+};
+
 /** 当前系统支持的语言 */
-export const availableLocales: Array<AvailableLocalesTypeValues> = [
-  "zh_CN",
-  "en_US"
-];
+export const availableLocales = Object.keys(
+  availableLocaleList
+) as Array<AvailableLocalesTypeValues>;
 
 /** url中标志语言的 key */
 export const urlQueryKey = "language";
