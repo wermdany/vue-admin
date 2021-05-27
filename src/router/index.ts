@@ -12,7 +12,7 @@ import {
   giveRouteConfigUseComponent
 } from "./generator";
 
-import { HOME_PAGE, NONE_PAGE } from "./var";
+import { HOME_PAGE, NONE_PAGE } from "./basicRouter";
 import type { App } from "vue";
 import { createGuard } from "./guard";
 
@@ -49,7 +49,7 @@ const router = createRouter({
  * @export
  * @param {RouteRecordRaw} routes
  */
-export function addRoutes(routes: RouteRecordRaw): void {
+function addRoutes(routes: RouteRecordRaw): void {
   router.addRoute(routes);
 }
 /**
@@ -59,7 +59,7 @@ export function addRoutes(routes: RouteRecordRaw): void {
  * @export
  * @param {RouteRecordName} name
  */
-export function removeRoute(name: RouteRecordName) {
+function removeRoute(name: RouteRecordName) {
   router.removeRoute(name);
 }
 
@@ -69,7 +69,7 @@ export function removeRoute(name: RouteRecordName) {
  * @date 21/01/2021
  * @export
  */
-export function getRoutes() {
+function getRoutes() {
   return router.getRoutes();
 }
 
@@ -80,8 +80,16 @@ export function getRoutes() {
  * @export
  * @param {RouteRecordName} name
  */
-export function hasRoute(name: RouteRecordName) {
+function hasRoute(name: RouteRecordName) {
   return router.hasRoute(name);
+}
+
+/**
+ *获取当前的路由
+ * @returns
+ */
+function getCurrentRoute() {
+  return router.currentRoute;
 }
 
 export default router;
@@ -89,4 +97,18 @@ export default router;
 export function setupVueRouter(app: App) {
   app.use(router);
   createGuard(router);
+}
+
+/**
+ *对外部提供 vue-router api
+ * @returns
+ */
+export function useRouterApi() {
+  return {
+    addRoutes,
+    removeRoute,
+    getRoutes,
+    hasRoute,
+    getCurrentRoute
+  };
 }

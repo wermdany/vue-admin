@@ -5,6 +5,8 @@ import { isDev } from "@/utils/env";
 
 import { fallbackLocale } from "@/locales/config";
 
+export * from "./useI18nApi";
+
 export const vueI18nOptions: I18nOptions = {
   // 不使用传统的 api
   legacy: false,

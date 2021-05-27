@@ -44,7 +44,7 @@ function changeI18nUseLocale(lang: AvailableLocalesTypeValues) {
   }
 }
 
-export function useI18nHelper() {
+export function useI18nApi() {
   return {
     changeI18nUseLocale,
     mergeI18nLocaleMessage,
