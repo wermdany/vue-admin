@@ -1,3 +1,15 @@
 <template>
-  <router-view />
+  <ConfigProvider>
+    <router-view />
+  </ConfigProvider>
 </template>
+<script lang="ts">
+import { defineComponent } from "vue";
+import { ConfigProvider } from "ant-design-vue";
+
+export default defineComponent({
+  components: {
+    ConfigProvider
+  }
+});
+</script>

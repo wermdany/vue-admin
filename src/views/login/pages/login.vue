@@ -1,11 +1,10 @@
 <template>
   <div class="login">
     <input type="text" v-model.number="system.num" />
-    <a-button type="primary" @click="changeLang"
-      >add{{ t("login.a") }}</a-button
-    >
+    <Button type="primary" @click="changeLang">{{ t("login.a") }}</Button>
+    <DatePicker v-model:value="dateTime" />
     <C />
-    <p v-for="(value, key) in lang" :key="key">{{ key + "-" + value }}</p>
+    <p v-for="(value, key) in lang" :key="value">{{ key + "-" + value }}</p>
     <ul>
       <li v-for="item in system.num" :key="item">{{ item }}</li>
     </ul>
@@ -13,29 +12,32 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, reactive } from "vue";
-import { Button } from "ant-design-vue";
+import { defineComponent, ref } from "vue";
+import { Button, DatePicker } from "ant-design-vue";
 import { useI18n } from "vue-i18n";
 import { useSystemStore, useLocaleStore } from "@/store";
 import { useLocaleApi } from "@/locales";
+import moment from "moment";
 import C from "./c";
+
 export default defineComponent({
-  name: "LOGIN",
+  name: "login",
   components: {
-    [Button.name]: Button,
+    Button: Button,
+    DatePicker,
     C
   },
   setup() {
-    const a = ref(1);
+    const dateTime = ref(moment().add(3, "weeks"));
     const { t } = useI18n();
     const system = useSystemStore();
     const locale = useLocaleStore();
     const { manualChangeUseLocale } = useLocaleApi();
 
-    const lang = reactive({
+    const lang = {
       zh_CN: "简体中文",
       en_US: "English (US)"
-    });
+    };
     const changeLang = () => {
       if (locale.lang == "zh_CN") {
         manualChangeUseLocale("en_US");
@@ -43,7 +45,7 @@ export default defineComponent({
         manualChangeUseLocale("zh_CN");
       }
     };
-    return { a, t, system, locale, changeLang, lang };
+    return { dateTime, t, system, locale, changeLang, lang };
   }
 });
 </script>

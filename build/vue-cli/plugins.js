@@ -5,7 +5,9 @@ const { useOtherEnv, isProd } = require("../env");
 const { ToEnvPrams } = require("../utils");
 module.exports = config => {
   // 把 moment 替换为 dayjs
-  config.plugin("momentToDayjsPlugin").use(MomentToDayjsPlugin);
+  config
+    .plugin("momentToDayjsPlugin")
+    .use(MomentToDayjsPlugin, [{ preset: "antdv3" }]);
 
   //增加打包 banner
   if (isProd) {

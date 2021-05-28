@@ -4,14 +4,14 @@
   "eslint.format.enable": true,
   "cSpell.words": [
     "Pinia",
-    "antd"
+    "antd",
+    "antdv"
   ],
   "eslint.packageManager": "yarn",
   "eslint.validate": [
     "typescript"
   ],
   "volar.tsPluginStatus": false,
-  "volar.codeLens.references": false,
   "volar.codeLens.pugTools": false,
-  "volar.autoCompleteRefs": true
+  "volar.codeLens.scriptSetupTools": false
 }

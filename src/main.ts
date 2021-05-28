@@ -6,6 +6,7 @@ import router, { setupVueRouter } from "@/router";
 import { setupStore } from "@/store";
 import { setupVueI18n } from "@/locales";
 import { isDev, env as ENV } from "@/utils";
+import { useAntdvLocale } from "@/packages/ant-design-vue";
 
 (async () => {
   const app = createApp(App);
@@ -29,3 +30,9 @@ import { isDev, env as ENV } from "@/utils";
     console.log(window.__ENV__);
   }
 })();
+
+const { loadAntdvMessage } = useAntdvLocale();
+
+const a = loadAntdvMessage("en_US");
+
+console.log(a);

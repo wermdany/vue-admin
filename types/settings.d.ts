@@ -5,4 +5,4 @@ export interface SystemSetting {
 /**
  * 系统模块
  */
-export type SystemModule = "login" | "common";
+export type SystemModule = "login" | "common" | "antdv";
