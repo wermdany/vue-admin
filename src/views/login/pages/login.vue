@@ -4,6 +4,7 @@
     <Button type="primary" @click="changeLang">{{ t("login.a") }}</Button>
     <DatePicker v-model:value="dateTime" />
     <C />
+    <Carousel />
     <p v-for="(value, key) in lang" :key="value">{{ key + "-" + value }}</p>
     <ul>
       <li v-for="item in system.num" :key="item">{{ item }}</li>
@@ -13,7 +14,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
-import { Button, DatePicker } from "ant-design-vue";
+import { Button, DatePicker, Carousel } from "ant-design-vue";
 import { useI18n } from "vue-i18n";
 import { useSystemStore, useLocaleStore } from "@/store";
 import { useLocaleApi } from "@/locales";
@@ -25,6 +26,7 @@ export default defineComponent({
   components: {
     Button: Button,
     DatePicker,
+    Carousel,
     C
   },
   setup() {

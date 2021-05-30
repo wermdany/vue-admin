@@ -4,9 +4,10 @@ import { defaultLocale } from "@/locales";
 import { defineStore } from "pinia";
 import Store from "@/store";
 
-type LocaleStateLocales =
-  | Record<AvailableLocalesTypeValues, Record<SystemModule, any>>
-  | {};
+type LocaleStateLocales = Record<
+  AvailableLocalesTypeValues,
+  Record<SystemModule, any>
+> | null;
 
 interface LocaleState {
   lang: AvailableLocalesTypeValues;
@@ -17,7 +18,7 @@ const useLocaleStore = defineStore({
   id: "locale",
   state: (): LocaleState => ({
     lang: defaultLocale,
-    locales: {}
+    locales: null
   }),
   actions: {
     /**

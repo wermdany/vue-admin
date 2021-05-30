@@ -1,1 +1,1 @@
-export * from "./useAntdLocale";
+export * from "./useAntdvLocale";

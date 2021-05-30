@@ -8,7 +8,7 @@ export interface SystemState {
 const useSystemStore = defineStore({
   id: "system",
   state: (): SystemState => ({
-    num: 1
+    num: 10000
   }),
   actions: {
     changeState() {
