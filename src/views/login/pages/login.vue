@@ -1,14 +1,10 @@
 <template>
   <div class="login">
-    <input type="text" v-model.number="system.num" />
-    <Button type="primary" @click="changeLang">{{ t("login.a") }}</Button>
+    <Button type="danger" @click="changeLang">{{ t("login.a") }}</Button>
     <DatePicker v-model:value="dateTime" />
     <C />
     <Carousel />
     <p v-for="(value, key) in lang" :key="value">{{ key + "-" + value }}</p>
-    <ul>
-      <li v-for="item in system.num" :key="item">{{ item }}</li>
-    </ul>
   </div>
 </template>
 
@@ -16,9 +12,9 @@
 import { defineComponent, ref } from "vue";
 import { Button, DatePicker, Carousel } from "ant-design-vue";
 import { useI18n } from "vue-i18n";
-import { useSystemStore, useLocaleStore } from "@/store";
+import { useLocaleStore } from "@/store";
 import { useLocaleApi } from "@/locales";
-import moment from "moment";
+import dayjs from "dayjs";
 import C from "./c";
 
 export default defineComponent({
@@ -30,9 +26,8 @@ export default defineComponent({
     C
   },
   setup() {
-    const dateTime = ref(moment().add(3, "weeks"));
+    const dateTime = ref(dayjs().add(4, "year"));
     const { t } = useI18n();
-    const system = useSystemStore();
     const locale = useLocaleStore();
     const { manualChangeUseLocale } = useLocaleApi();
 
@@ -47,7 +42,7 @@ export default defineComponent({
         manualChangeUseLocale("zh_CN");
       }
     };
-    return { dateTime, t, system, locale, changeLang, lang };
+    return { dateTime, t, locale, changeLang, lang };
   }
 });
 </script>

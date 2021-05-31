@@ -7,13 +7,15 @@ import { version } from "ant-design-vue/package.json";
  * @param lang
  * @returns
  */
-async function loadAntdvMessage(lang: AvailableLocalesTypeValues) {
+async function loadAntdvMessage(
+  lang: AvailableLocalesTypeValues
+): Promise<Record<string, any>> {
   const message = (
     await import(
       /* webpackChunkName: "../lang/antdv-[request]" */
       `@/packages/ant-design-vue/lang/${lang}`
     )
-  ).default as Record<string, any>;
+  ).default;
   message[LOCALE_CACHE_MESSAGE_HASH_KEY] = version;
   return message;
 }

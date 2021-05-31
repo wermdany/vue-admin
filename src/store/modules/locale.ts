@@ -1,24 +1,16 @@
 import type { AvailableLocalesTypeValues } from "#/locales";
-import type { SystemModule } from "#/settings";
 import { defaultLocale } from "@/locales";
 import { defineStore } from "pinia";
 import Store from "@/store";
 
-type LocaleStateLocales = Record<
-  AvailableLocalesTypeValues,
-  Record<SystemModule, any>
-> | null;
-
 interface LocaleState {
   lang: AvailableLocalesTypeValues;
-  locales: LocaleStateLocales;
 }
 
 const useLocaleStore = defineStore({
   id: "locale",
   state: (): LocaleState => ({
-    lang: defaultLocale,
-    locales: null
+    lang: defaultLocale
   }),
   actions: {
     /**

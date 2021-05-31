@@ -6,12 +6,17 @@ import axios from "axios";
 import { useEnv } from "@/utils";
 
 import { useI18nApi } from "@/packages/vue-i18n/useI18nApi";
-import { useLocaleStoreOut } from "@/store";
+import { useLocaleStore, useLocaleStoreOut } from "@/store";
 import { changeHTMLUseLocale, pickLangMsgFileHash } from "@/utils";
-import { LOCALE_CACHE_MESSAGE_HASH_KEY } from "@/settings";
+import {
+  ANTDV_LOCALES_MODULE_KEY,
+  LOCALE_CACHE_MESSAGE_HASH_KEY
+} from "@/settings";
 import { availableLocales } from "@/locales/config";
 import { useRouterApi } from "@/router";
-import { unref } from "vue";
+import { computed, unref } from "vue";
+import { useAntdvLocale } from "@/packages/ant-design-vue";
+import { changeDayjsUseLocale } from "@/packages/dayjs";
 
 const prefix = useEnv("VUE_APP_PUBLIC_PATH");
 
@@ -22,13 +27,16 @@ const prefix = useEnv("VUE_APP_PUBLIC_PATH");
 function changeUseLocale(lang: AvailableLocalesTypeValues) {
   // store hooks 必须在周期内调用，否则就会报错
   const { changeStoreUseLocale } = useLocaleStoreOut();
-  // 设置 vue-i18n
   const { changeI18nUseLocale } = useI18nApi();
+
+  // 设置 vue-i18n
   changeI18nUseLocale(lang);
   // 设置 store
   changeStoreUseLocale(lang);
   // 设置 HTML 标识
   changeHTMLUseLocale(lang);
+  // 设置 dayjs
+  changeDayjsUseLocale(lang);
   // TODO: 设置系统缓存
 }
 
@@ -123,6 +131,18 @@ async function manualChangeUseLocale(lang: AvailableLocalesTypeValues) {
     // TODO: 给出提示
     return;
   }
+  // 拿到 vue-i18n 相关 api
+  const { mergeI18nLocaleMessage } = useI18nApi();
+
+  // 1. 尝试加载 antdv 国际化
+  const antdv = ANTDV_LOCALES_MODULE_KEY;
+
+  const { loadAntdvMessage } = useAntdvLocale();
+  const antdvMessage = await loadAntdvMessage(lang);
+
+  // 合并国际化语言
+  mergeI18nLocaleMessage(lang, { [antdv]: antdvMessage });
+  // 2. 尝试加载页面国际化
   // 拿到当前路由信息
   const { getCurrentRoute } = useRouterApi();
   // 获取 module
@@ -139,8 +159,6 @@ async function manualChangeUseLocale(lang: AvailableLocalesTypeValues) {
   const message = await loadLangMessage(path);
   // 注入 hash 用以缓存
   message[LOCALE_CACHE_MESSAGE_HASH_KEY] = hash;
-  // 设置国际化 message
-  const { mergeI18nLocaleMessage } = useI18nApi();
   // 合并国际化语言
   mergeI18nLocaleMessage(lang, { [module]: message });
   // 切换语言
@@ -155,27 +173,49 @@ async function manualChangeUseLocale(lang: AvailableLocalesTypeValues) {
 async function autoLoadLangMessage(to: RouteLocationNormalized) {
   const { loadLangMessage, getLangPathAndHash, canILoadMessage } =
     useLocaleApi();
+  // 拿到 vue-i18n 相关 api
+  const { mergeI18nLocaleMessage } = useI18nApi();
   // 拿到当前国际化语言标识
   const { lang } = useLocaleStoreOut();
+  // 1. 尝试加载 antdv 国际化
+  const antdv = ANTDV_LOCALES_MODULE_KEY;
+
+  const { loadAntdvMessage } = useAntdvLocale();
+  const antdvMessage = await loadAntdvMessage(lang);
+
+  // 合并国际化语言
+  mergeI18nLocaleMessage(lang, { [antdv]: antdvMessage });
+
+  // 2. 尝试加载页面国际化
   // 拿到模块名
   const module = to.meta.module;
   if (!module) {
-    return true;
+    return;
   }
   // 根据模块名和语言标识找到加载国际化语言文件的地址
   const { hash, path } = await getLangPathAndHash(module, lang);
   if (!canILoadMessage(lang, hash, module)) {
-    return true;
+    return;
   }
   // 请求资源
   const message = await loadLangMessage(path);
   // 注入 hash 用以缓存
   message[LOCALE_CACHE_MESSAGE_HASH_KEY] = hash;
-  // 设置国际化 message
-  const { mergeI18nLocaleMessage } = useI18nApi();
+
   // 合并国际化语言
   mergeI18nLocaleMessage(lang, { [module]: message });
 }
+
+function getAntdvLocales() {
+  const localeStore = useLocaleStore();
+  const { getI18nNowAllLocaleMessage } = useI18nApi();
+  const message = getI18nNowAllLocaleMessage();
+  console.log(message);
+  return computed(() => {
+    return unref(message)?.[localeStore.lang]?.[ANTDV_LOCALES_MODULE_KEY] ?? {};
+  });
+}
+
 /**
  *对外部提供系统国际化 api
  */
@@ -186,6 +226,7 @@ export function useLocaleApi() {
     getLangPathAndHash,
     canILoadMessage,
     manualChangeUseLocale,
-    autoLoadLangMessage
+    autoLoadLangMessage,
+    getAntdvLocales
   };
 }

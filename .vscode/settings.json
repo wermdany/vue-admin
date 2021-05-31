@@ -13,5 +13,8 @@
   ],
   "volar.tsPluginStatus": false,
   "volar.codeLens.pugTools": false,
-  "volar.codeLens.scriptSetupTools": false
+  "volar.codeLens.scriptSetupTools": false,
+  "volar.codeLens.references": false,
+  "volar.preferredTagNameCase": "pascal",
+  "editor.codeActionsOnSave": null
 }
