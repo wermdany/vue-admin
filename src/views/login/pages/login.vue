@@ -1,6 +1,6 @@
 <template>
   <div class="login">
-    <Button type="danger" @click="changeLang">{{ t("login.a") }}</Button>
+    <Button type="primary" @click="changeLang">{{ t("login.a") }}</Button>
     <DatePicker v-model:value="dateTime" />
     <C />
     <Carousel />

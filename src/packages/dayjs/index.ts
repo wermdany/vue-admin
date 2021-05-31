@@ -9,7 +9,10 @@ const localeList = {
   en_US,
   zh_CN
 };
-
+/**
+ *改变 dayjs 的国际化
+ * @param lang 语言
+ */
 export function changeDayjsUseLocale(lang: AvailableLocalesTypeValues) {
   dayjs.locale(localeList[lang]);
 }

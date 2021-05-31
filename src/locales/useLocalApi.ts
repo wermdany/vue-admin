@@ -1,12 +1,13 @@
 import type { AvailableLocalesTypeValues } from "#/locales";
 import type { SystemModule } from "#/settings";
 import type { RouteLocationNormalized } from "vue-router";
+import type { Locale as AntdvLocaleMessage } from "ant-design-vue/lib/locale-provider";
 
 import axios from "axios";
 import { useEnv } from "@/utils";
 
 import { useI18nApi } from "@/packages/vue-i18n/useI18nApi";
-import { useLocaleStore, useLocaleStoreOut } from "@/store";
+import { useLocaleStoreOut } from "@/store";
 import { changeHTMLUseLocale, pickLangMsgFileHash } from "@/utils";
 import {
   ANTDV_LOCALES_MODULE_KEY,
@@ -205,14 +206,17 @@ async function autoLoadLangMessage(to: RouteLocationNormalized) {
   // 合并国际化语言
   mergeI18nLocaleMessage(lang, { [module]: message });
 }
-
+/**
+ *获取 ant-design-vue 需要使用的国际化
+ * @returns
+ */
 function getAntdvLocales() {
-  const localeStore = useLocaleStore();
-  const { getI18nNowAllLocaleMessage } = useI18nApi();
-  const message = getI18nNowAllLocaleMessage();
-  console.log(message);
+  const localeStore = useLocaleStoreOut();
+  const lang = computed(() => localeStore.lang);
   return computed(() => {
-    return unref(message)?.[localeStore.lang]?.[ANTDV_LOCALES_MODULE_KEY] ?? {};
+    const { getI18nNowLocaleMessageByLang } = useI18nApi();
+    const message = getI18nNowLocaleMessageByLang(unref(lang));
+    return unref(message)?.[ANTDV_LOCALES_MODULE_KEY] as AntdvLocaleMessage;
   });
 }
 

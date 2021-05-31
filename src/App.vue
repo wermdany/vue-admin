@@ -6,7 +6,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { ConfigProvider } from "ant-design-vue";
-import { useLocaleApi } from "./locales";
+import { useLocaleApi } from "@/locales";
 
 export default defineComponent({
   components: {
@@ -14,10 +14,8 @@ export default defineComponent({
   },
   setup() {
     const { getAntdvLocales } = useLocaleApi();
-    const a = getAntdvLocales() as any;
-    console.log(a);
     return {
-      locale: undefined
+      locale: getAntdvLocales()
     };
   }
 });
