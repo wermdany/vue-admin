@@ -18,5 +18,6 @@ module.exports = {
       less
     }
   },
+  transpileDependencies: [],
   devServer: devServer
 };

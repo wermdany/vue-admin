@@ -10,6 +10,8 @@ module.exports = config => {
   }
   plugins(config);
   loader(config);
+  config.resolve.alias.set("path", require.resolve("path-browserify"));
+
   // config.optimization.splitChunks({
   //   chunks: "all"
   // });
